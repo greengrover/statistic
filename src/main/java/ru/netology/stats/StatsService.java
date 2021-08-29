@@ -44,7 +44,7 @@ public class StatsService {
         int monthUnderAverage = 0;
 
         for (int sale : sales) {
-            if (sale < (calculateSumSales(sales) / sales.length)) {
+            if (sale < calculateAverageSale(sales)) {
                 monthUnderAverage = monthUnderAverage + 1;
             }
         }
@@ -55,7 +55,7 @@ public class StatsService {
         int monthAboveAverage = 0;
 
         for (int sale : sales) {
-            if (sale > (calculateSumSales(sales) / sales.length))
+            if (sale > calculateAverageSale(sales))
                 monthAboveAverage = monthAboveAverage + 1;
         }
         return monthAboveAverage;
