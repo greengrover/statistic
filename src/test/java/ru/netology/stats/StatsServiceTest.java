@@ -7,64 +7,46 @@ import static org.junit.jupiter.api.Assertions.*;
 class StatsServiceTest {
 
     StatsService service = new StatsService();
-    int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+    int[] sales = {15, 8, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
     @Test
     void calculateSumSales() {
 
-        int expected = 180;
-        int actual = service.calculateSumSales(sales);
-
-        assertEquals(expected, actual);
+        assertEquals(180, service.calculateSumSales(sales));
 
     }
 
     @Test
     void calculateAverageSale() {
 
-        int expected = 15;
-        int actual = service.calculateAverageSale(sales);
-
-        assertEquals(expected, actual);
+        assertEquals(15, service.calculateAverageSale(sales));
 
     }
 
     @Test
     void calculateMaxMonth() {
 
-        int expected = 8;
-        int actual = service.calculateMaxMonth(sales);
-
-        assertEquals(expected, actual);
+        assertEquals(8, service.calculateMaxMonth(sales));
 
     }
 
     @Test
     void calculateMinMonth() {
 
-        int expected = 9;
-        int actual = service.calculateMinMonth(sales);
-
-        assertEquals(expected, actual);
+        assertEquals(9, service.calculateMinMonth(sales));
     }
 
     @Test
     void calculateCountMonthUnderAverage() {
 
-        int expected = 5;
-        int actual = service.calculateCountMonthUnderAverage(sales);
-
-        assertEquals(expected, actual);
+        assertEquals(5, service.calculateCountMonthUnderAverage(sales));
 
     }
 
     @Test
     void calculateCountMonthAboveAverage() {
 
-        int expected = 5;
-        int actual = service.calculateCountMonthAboveAverage(sales);
-
-        assertEquals(expected, actual);
+        assertEquals(5, service.calculateCountMonthAboveAverage(sales));
     }
 
 }

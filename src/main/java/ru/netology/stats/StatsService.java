@@ -13,38 +13,64 @@ public class StatsService {
     public int calculateAverageSale(int[] sales) {
 
         return calculateSumSales(sales) / sales.length;
+
     }
 
     public int calculateMaxMonth(int[] sales) {
+        int maxSaleValue = getMaxSaleValue(sales);
         int maxMonth = 0;
-        int month = 0;
+        int monthCounter = 0;
         for (int sale : sales) {
-            if (sale >= sales[maxMonth]) {
-                maxMonth = month;
+            monthCounter++; //monthCounter = monthCounter + 1;
+            if (sale == maxSaleValue) {
+                maxMonth = monthCounter;
             }
-            month = month + 1;
+
         }
-        return maxMonth + 1;
+        return maxMonth;
+    }
+
+    private int getMaxSaleValue(int[] sales) {
+        int maxSaleValue = sales[0];
+        for (int sale : sales) {
+            if (sale > maxSaleValue) {
+                maxSaleValue = sale;
+            }
+        }
+        return maxSaleValue;
     }
 
     public int calculateMinMonth(int[] sales) {
+        int minSaleValue = getMinMonthValue(sales);
         int minMonth = 0;
-        int month = 0;
+        int monthCounter = 0;
         for (int sale : sales) {
-            if (sale <= sales[minMonth]) {
-                minMonth = month;
+            monthCounter++;
+            if (sale == minSaleValue) {
+                minMonth = monthCounter;
             }
-            month = month + 1;
         }
-        return minMonth + 1;
+        return minMonth;
     }
+
+    private int getMinMonthValue(int[] sales) {
+        int minSaleValue = sales[0];
+        for (int sale : sales) {
+            if (sale < minSaleValue) {
+                minSaleValue = sale;
+            }
+        }
+        return minSaleValue;
+
+    }
+
 
     public int calculateCountMonthUnderAverage(int[] sales) {
 
         int monthUnderAverage = 0;
-
+        int avgSales = calculateAverageSale(sales);
         for (int sale : sales) {
-            if (sale < calculateAverageSale(sales)) {
+            if (sale < avgSales) {
                 monthUnderAverage = monthUnderAverage + 1;
             }
         }
@@ -53,9 +79,9 @@ public class StatsService {
 
     public int calculateCountMonthAboveAverage(int[] sales) {
         int monthAboveAverage = 0;
-
+        int avgSales = calculateAverageSale(sales);
         for (int sale : sales) {
-            if (sale > calculateAverageSale(sales))
+            if (sale > avgSales)
                 monthAboveAverage = monthAboveAverage + 1;
         }
         return monthAboveAverage;
